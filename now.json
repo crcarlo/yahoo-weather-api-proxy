@@ -6,5 +6,8 @@
 		"YAHOO_APP_ID": "@yahoo-app-id",
 		"YAHOO_CONSUMER_KEY": "@yahoo-consumer-key",
 		"YAHOO_CONSUMER_SECRET": "@yahoo-consumer-secret"
-	}
+	},
+	"routes": [
+		{ "src": "/(.*)", "dest": "/index.js" }
+	]
 }
