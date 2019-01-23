@@ -32,9 +32,30 @@ module.exports = (req, res) => {
     null,
     function(err, data, result) {
       if (err) {
-        res.end("ERROR");
+        res.end(
+          JSON.stringify({
+            error: "Error occurred while contacting Yahoo APIs"
+          })
+        );
       } else {
-        res.end(data);
+        try {
+          const jsonData = JSON.stringify(data);
+          if (jsonData) {
+            res.end(jsonData);
+      } else {
+            res.end(
+              JSON.stringify({
+                error: "No response data"
+              })
+            );
+          }
+        } catch (err) {
+          res.end(
+            JSON.stringify({
+              error: "Error occurred while parsing json response"
+            })
+          );
+        }
       }
     }
   );
