@@ -5,8 +5,16 @@ module.exports = (req, res) => {
   const header = {
     "Yahoo-App-Id": process.env.YAHOO_APP_ID
   };
-  const requestOrigin = req.headers.origin;
+  const { referer } = req.headers;
   const { path } = url.parse(req.url);
+
+  if (referer !== process.env.ALLOWED_ORIGIN) {
+    res.end(JSON.stringify({
+      error: "Origin not allowed"
+    }));
+    return;
+  }
+
   const request = new OAuth.OAuth(
     null,
     null,

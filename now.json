@@ -3,6 +3,7 @@
   "name": "yahoo-weather-api-proxy",
   "builds": [{ "src": "*.js", "use": "@now/node" }],
   "env": {
+    "ALLOWED_ORIGIN": "http://localhost:3000/",
     "YAHOO_APP_ID": "@yahoo-app-id",
     "YAHOO_CONSUMER_KEY": "@yahoo-consumer-key",
     "YAHOO_CONSUMER_SECRET": "@yahoo-consumer-secret"
