@@ -5,15 +5,8 @@ module.exports = (req, res) => {
   const header = {
     "Yahoo-App-Id": process.env.YAHOO_APP_ID
   };
-  const { referer } = req.headers;
-  const { path } = url.parse(req.url);
 
-  if (referer !== process.env.ALLOWED_ORIGIN) {
-    res.end(JSON.stringify({
-      error: "Origin not allowed"
-    }));
-    return;
-  }
+  const { path } = url.parse(req.url);
 
   const request = new OAuth.OAuth(
     null,
@@ -26,6 +19,7 @@ module.exports = (req, res) => {
     null,
     header
   );
+
   request.get(
     "https://weather-ydn-yql.media.yahoo.com" + path,
     null,
@@ -42,7 +36,7 @@ module.exports = (req, res) => {
           const jsonData = JSON.stringify(data);
           if (jsonData) {
             res.end(jsonData);
-      } else {
+          } else {
             res.end(
               JSON.stringify({
                 error: "No response data"

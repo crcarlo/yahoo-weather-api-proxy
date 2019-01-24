@@ -3,7 +3,6 @@
   "name": "yahoo-weather-api-proxy",
   "builds": [{ "src": "*.js", "use": "@now/node" }],
   "env": {
-    "ALLOWED_ORIGIN": "http://localhost:3000/",
     "YAHOO_APP_ID": "@yahoo-app-id",
     "YAHOO_CONSUMER_KEY": "@yahoo-consumer-key",
     "YAHOO_CONSUMER_SECRET": "@yahoo-consumer-secret"
@@ -11,7 +10,7 @@
   "routes": [
     {
       "headers": {
-        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Origin": "http://localhost:3000",
         "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
         "Access-Control-Allow-Headers": "X-Requested-With, Content-Type, Accept"
       },
