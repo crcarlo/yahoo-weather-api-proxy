@@ -1,6 +1,35 @@
 const OAuth = require("oauth");
 const url = require("url");
 
+const handleProxyRequest = (err, data, result) => {
+  if (err) {
+    res.end(
+      JSON.stringify({
+        error: "Error occurred while contacting Yahoo APIs"
+      })
+    );
+  } else {
+    try {
+      const jsonData = JSON.stringify(data);
+      if (jsonData) {
+        res.end(jsonData);
+      } else {
+        res.end(
+          JSON.stringify({
+            error: "No response data"
+          })
+        );
+      }
+    } catch (err) {
+      res.end(
+        JSON.stringify({
+          error: "Error occurred while parsing json response"
+        })
+      );
+    }
+  }
+};
+
 module.exports = (req, res) => {
   const header = {
     "Yahoo-App-Id": process.env.YAHOO_APP_ID
@@ -24,33 +53,6 @@ module.exports = (req, res) => {
     "https://weather-ydn-yql.media.yahoo.com" + path,
     null,
     null,
-    function(err, data, result) {
-      if (err) {
-        res.end(
-          JSON.stringify({
-            error: "Error occurred while contacting Yahoo APIs"
-          })
-        );
-      } else {
-        try {
-          const jsonData = JSON.stringify(data);
-          if (jsonData) {
-            res.end(jsonData);
-          } else {
-            res.end(
-              JSON.stringify({
-                error: "No response data"
-              })
-            );
-          }
-        } catch (err) {
-          res.end(
-            JSON.stringify({
-              error: "Error occurred while parsing json response"
-            })
-          );
-        }
-      }
-    }
+    handleProxyRequest
   );
 };
