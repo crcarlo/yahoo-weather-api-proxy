@@ -55,7 +55,7 @@ now
 Now you can access Yahoo weather API through your `now.sh` instance like so
 
 ```
-https://your-instance.now.sh/forecastrss?latitude=45.6481607&longitude=12.340719,ca&format=json
+https://your-instance.now.sh/forecastrss?latitude=45.6481607&longitude=12.340719&format=json
 ```
 
 You can find the API documentation [here](https://developer.yahoo.com/weather/documentation.html). 
