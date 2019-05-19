@@ -4,7 +4,7 @@
 
 ## Why?
 
-Since **Jan 3, 2019** the use of Yahoo weather API throug YQL has been dismissed and therefore you cannot have an app that directly calls an open API for getting weather data.
+Since **Jan 3, 2019** the use of Yahoo weather API through YQL has been dismissed and therefore you cannot have an app that directly calls an open API for getting weather data.
 
 Now you need to directly retrive the data from your back end using secret API keys you can receive [here](https://developer.yahoo.com/apps/create/).
 
